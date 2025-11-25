@@ -1,4 +1,6 @@
-/*.emSession
+*.emSession
+*.jlink
 /00std_hello_world/Output/
 /00std_led_appcore/Output/
-*.jlink
+/00std_led_netcore/Output/
+
