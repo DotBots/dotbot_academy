@@ -116,7 +116,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="00std_hello_world.c" />
+      <file file_name="00std_led_appcore.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="../common/system/nRF/Source/nrf5340_application_Vectors.s">
