@@ -1,13 +1,18 @@
 #include "nrf5340_application.h"
 
 // per the schematic:
-//  - the LED1 is connected to P0.28
-//  - the LED2 is connected to P0.29
-//  - the LED3 is connected to P0.30
-//  - the LED4 is connected to P0.31
+//  - LED1    is connected to P0.28
+//  - LED2    is connected to P0.29
+//  - LED3    is connected to P0.30
+//  - LED4    is connected to P0.31
+//
+//  - BUTTON1 is connected to P0.23
+//  - BUTTON2 is connected to P0.24
+//  - BUTTON3 is connected to P0.08
+//  - BUTTON4 is connected to P0.09
 
 int main(void) {
-   
+    
     // allow the netcore to use the LED pins
     //  3           2            1           0
     // 1098 7654 3210 9876 5432 1098 7654 3210
@@ -23,10 +28,25 @@ int main(void) {
     NRF_P0_S->PIN_CNF[29]         = 0x10000003; // LED2
     NRF_P0_S->PIN_CNF[30]         = 0x10000003; // LED3
     NRF_P0_S->PIN_CNF[31]         = 0x10000003; // LED4
-
+    
+    // allow the netcore to use the BUTTON pins
+    // 1098 7654 3210 9876 5432 1098 7654 3210
+    // .... .... .... .... .... .... .... ...A A: DIR:    0=Input
+    // .... .... .... .... .... .... .... ..B. B: INPUT:  0=Connect
+    // .... .... .... .... .... .... .... CC.. C: PULL:   0=Disabled
+    // .... .... .... .... .... .DDD .... .... D: DRIVE:  0=S0S1
+    // .... .... .... ..EE .... .... .... .... E: SENSE:  2=High
+    // .FFF .... .... .... .... .... .... .... F: MCUSEL: 1=NetworkMCU
+    // xxxx xxxx xxxx xx10 xxxx xxxx xxxx 0000 
+    //    1    0    0    2    0    0    0    0 0x10020000
+    NRF_P0_S->PIN_CNF[23]         = 0x10020000; // BUTTON1
+    NRF_P0_S->PIN_CNF[24]         = 0x10020000; // BUTTON2
+    NRF_P0_S->PIN_CNF[ 8]         = 0x10020000; // BUTTON3
+    NRF_P0_S->PIN_CNF[ 9]         = 0x10020000; // BUTTON4
+    
     // release the netcore's reset line
     NRF_RESET_S->NETWORK.FORCEOFF = 0;
-
+    
     // main loop
     while(1) {
         __SEV(); // set event
