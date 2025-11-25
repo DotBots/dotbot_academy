@@ -126,7 +126,7 @@
       <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
     </folder>
   </project>
-  <project Name="00std_dotbot_led_appcore">
+  <project Name="00std_dotbot_leds_appcore">
     <configuration
       LIBRARY_IO_TYPE="RTT"
       Name="Common"
@@ -154,7 +154,7 @@
       link_linker_script_file="$(ProjectDir)/../common/system/nRF_Flash_Variant2.icf"
       linker_memory_map_file="$(ProjectDir)/../common/system/nRF5340_xxAA_Application_MemoryMap.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/../common/system/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/../common/system/nRF/Device/Source/system_nrf5340_application.c;DeviceVectorsFile=$(PackagesDir)/../common/system/nRF/Source/nrf5340_application_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Application"
-      project_directory="00std_dotbot_led_appcore"
+      project_directory="00std_dotbot_leds_appcore"
       project_type="Executable"
       target_reset_script="Reset();" />
     <folder Name="CMSIS Files">
@@ -173,7 +173,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="00std_dotbot_led_appcore.c" />
+      <file file_name="00std_dotbot_leds_appcore.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="../common/system/nRF/Source/nrf5340_application_Vectors.s">
@@ -183,7 +183,7 @@
       <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
     </folder>
   </project>
-  <project Name="00std_dotbot_led">
+  <project Name="00std_dotbot_leds">
     <configuration
       LIBRARY_IO_TYPE="RTT"
       Name="Common"
@@ -211,7 +211,7 @@
       link_linker_script_file="$(ProjectDir)/../common/system/nRF_Flash_Variant3.icf"
       linker_memory_map_file="$(ProjectDir)/../common/system/nRF5340_xxAA_Network_MemoryMap.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/../common/system/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/../common/system/nRF/Device/Source/system_nrf5340_network.c;DeviceVectorsFile=$(PackagesDir)/../common/system/nRF/Source/nrf5340_network_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Network"
-      project_directory="00std_dotbot_led"
+      project_directory="00std_dotbot_leds"
       project_type="Executable"
       target_reset_script="Reset();" />
     <folder Name="CMSIS Files">
@@ -230,7 +230,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="00std_dotbot_led.c" />
+      <file file_name="00std_dotbot_leds.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="../common/system/nRF/Source/nrf5340_network_Vectors.s">
@@ -354,7 +354,7 @@
       <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
     </folder>
   </project>
-  <project Name="00std_nrf5340-dk_led">
+  <project Name="00std_nrf5340-dk_leds">
     <configuration
       LIBRARY_IO_TYPE="RTT"
       Name="Common"
@@ -382,7 +382,7 @@
       link_linker_script_file="$(ProjectDir)/../common/system/nRF_Flash_Variant3.icf"
       linker_memory_map_file="$(ProjectDir)/../common/system/nRF5340_xxAA_Network_MemoryMap.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/../common/system/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/../common/system/nRF/Device/Source/system_nrf5340_network.c;DeviceVectorsFile=$(PackagesDir)/../common/system/nRF/Source/nrf5340_network_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Network"
-      project_directory="00std_nrf5340-dk_led"
+      project_directory="00std_nrf5340-dk_leds"
       project_type="Executable"
       target_reset_script="Reset();" />
     <folder Name="CMSIS Files">
@@ -401,7 +401,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="00std_nrf5340-dk_led.c" />
+      <file file_name="00std_nrf5340-dk_leds.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="../common/system/nRF/Source/nrf5340_network_Vectors.s">
