@@ -1,8 +1,9 @@
 *.emSession
 *.jlink
-/00std_bootloader_appcore/Output/
+/00std_dotbot_bootloader/Output/
+/00std_dotbot_led/Output/
+/00std_dotbot_led_appcore/Output/
+/00std_dotbot_motors/Output/
 /00std_hello_world/Output/
-/00std_led_appcore/Output/
-/00std_led_netcore/Output/
-/00std_motors/Output/
-
+/00std_nrf5340-dk_bootloader/Output/
+/00std_nrf5340-dk_led/Output/
