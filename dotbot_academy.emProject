@@ -12,6 +12,63 @@
     gcc_debugging_level="Level 2"
     gcc_omit_frame_pointer="Yes"
     gcc_optimization_level="Level 2 balanced" />
+  <project Name="00std_bootloader_appcore">
+    <configuration
+      LIBRARY_IO_TYPE="RTT"
+      Name="Common"
+      Target="nRF5340_xxAA_Application"
+      arm_architecture="v8M_Mainline"
+      arm_compiler_variant="SEGGER"
+      arm_core_type="Cortex-M33"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv5-SP-D16"
+      arm_linker_heap_size="1024"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="2048"
+      arm_linker_variant="SEGGER"
+      arm_simulator_memory_simulation_parameter="ROM;0x00000000;0x00100000;ROM;0x10000000;0x08000000;RAM;0x20000000;0x00040000;RAM;0x20040000;0x0003F000"
+      arm_target_device_name="nRF5340_xxAA_APP"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="ARM_MATH_ARMV8MML;NRF5340_XXAA;NRF_APPLICATION;__NRF_FAMILY"
+      c_user_include_directories="$(ProjectDir)/../common/system/CMSIS_5/CMSIS/Core/Include;$(ProjectDir)/../common/system/nRF/Device/Include"
+      debug_register_definition_file="$(ProjectDir)/../common/system/nrf5340_application_Registers.xml"
+      debug_stack_pointer_start="__stack_end__"
+      debug_start_from_entry_point_symbol="No"
+      debug_target_connection="J-Link"
+      gcc_entry_point="Reset_Handler"
+      link_linker_script_file="$(ProjectDir)/../common/system/nRF_Flash_Variant2.icf"
+      linker_memory_map_file="$(ProjectDir)/../common/system/nRF5340_xxAA_Application_MemoryMap.xml"
+      macros="DeviceHeaderFile=$(PackagesDir)/../common/system/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/../common/system/nRF/Device/Source/system_nrf5340_application.c;DeviceVectorsFile=$(PackagesDir)/../common/system/nRF/Source/nrf5340_application_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Application"
+      project_directory="00std_bootloader_appcore"
+      project_type="Executable"
+      target_reset_script="Reset();" />
+    <folder Name="CMSIS Files">
+      <file file_name="../common/system/nRF/Device/Include/nrf.h" />
+      <file file_name="../common/system/nRF/Device/Source/system_nrf5340_application.c">
+        <configuration
+          Name="Common"
+          default_code_section=".init"
+          default_const_section=".init_rodata" />
+      </file>
+    </folder>
+    <folder Name="Script Files">
+      <file file_name="../common/system/nRF/Scripts/nRF_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+    </folder>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="00std_bootloader_appcore.c" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="../common/system/nRF/Source/nrf5340_application_Vectors.s">
+        <configuration Name="Common" file_type="Assembly" />
+      </file>
+      <file file_name="../common/system/nRF/Source/nRF_Startup.s" />
+      <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
+    </folder>
+  </project>
   <project Name="00std_hello_world">
     <configuration
       LIBRARY_IO_TYPE="RTT"
