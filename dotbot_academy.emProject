@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Project_File>
-<solution Name="00std_hello_world" target="8" version="2">
+<solution Name="dotbot_academy" target="8" version="2">
   <configuration
     Name="Debug"
     c_preprocessor_definitions="DEBUG"
@@ -40,7 +40,7 @@
       link_linker_script_file="$(ProjectDir)/nRF_Flash_Variant2.icf"
       linker_memory_map_file="$(ProjectDir)/nRF5340_xxAA_Application_MemoryMap.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/nRF/Device/Source/system_nrf5340_application.c;DeviceVectorsFile=$(PackagesDir)/nRF/Source/nrf5340_application_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Application"
-      project_directory=""
+      project_directory="00std_hello_world"
       project_type="Executable"
       target_reset_script="Reset();" />
     <folder Name="CMSIS Files">
@@ -59,7 +59,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
-      <file file_name="main.c" />
+      <file file_name="00std_hello_world.c" />
     </folder>
     <folder Name="System Files">
       <file file_name="nRF/Source/nrf5340_application_Vectors.s">
