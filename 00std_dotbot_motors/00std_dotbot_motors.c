@@ -1,4 +1,4 @@
-#include "nrf5340_application.h"
+#include "nrf5340_network.h"
 
 // per the schematic:
 //  - the red   LED is connected to P0.22
@@ -35,26 +35,26 @@ int main(void) {
     // .FFF .... .... .... .... .... .... .... F: MCUSEL: 0=NetworkMCU
     // x000 xxxx xxxx xx00 xxxx 0000 xxxx 0011 
     //    0    0    0    0    0    0    0    3 0x00000003
-    NRF_P0_S->PIN_CNF[LED_GREEN]       = 0x00000003;
-    NRF_P0_S->PIN_CNF[PIN_VMOTOR_EN]   = 0x00000003;
-    NRF_P0_S->PIN_CNF[PIN_AN1]         = 0x00000003;
-    NRF_P0_S->PIN_CNF[PIN_AN2]         = 0x00000003;
-    NRF_P0_S->PIN_CNF[PIN_BN1]         = 0x00000003;
-    NRF_P0_S->PIN_CNF[PIN_BN2]         = 0x00000003;
+    NRF_P0_NS->PIN_CNF[LED_GREEN]      = 0x00000003;
+    NRF_P0_NS->PIN_CNF[PIN_VMOTOR_EN]  = 0x00000003;
+    NRF_P0_NS->PIN_CNF[PIN_AN1]        = 0x00000003;
+    NRF_P0_NS->PIN_CNF[PIN_AN2]        = 0x00000003;
+    NRF_P0_NS->PIN_CNF[PIN_BN1]        = 0x00000003;
+    NRF_P0_NS->PIN_CNF[PIN_BN2]        = 0x00000003;
 
     // switch LED_GREEN ON
-    NRF_P0_S->OUTSET                   = (0x00000001 << LED_GREEN);
+    NRF_P0_NS->OUTSET                  = (0x00000001 << LED_GREEN);
     
     // enable motors (active low)
-    NRF_P0_S->OUTCLR                   = (0x00000001 << PIN_VMOTOR_EN);
+    NRF_P0_NS->OUTCLR                  = (0x00000001 << PIN_VMOTOR_EN);
     
     // full speed forward
     // motor 1 (left) clockwise
-    NRF_P0_S->OUTSET                   = (0x00000001 << PIN_AN1); // AN1 HIGH
-    NRF_P0_S->OUTCLR                   = (0x00000001 << PIN_AN2); // AN2 LOW
+    NRF_P0_NS->OUTSET                  = (0x00000001 << PIN_AN1); // AN1 HIGH
+    NRF_P0_NS->OUTCLR                  = (0x00000001 << PIN_AN2); // AN2 LOW
     // motor 2 (right) counter-clockwise
-    NRF_P0_S->OUTCLR                   = (0x00000001 << PIN_BN1); // BN1 LOW
-    NRF_P0_S->OUTSET                   = (0x00000001 << PIN_BN2); // BN2 HIGH
+    NRF_P0_NS->OUTCLR                  = (0x00000001 << PIN_BN1); // BN1 LOW
+    NRF_P0_NS->OUTSET                  = (0x00000001 << PIN_BN2); // BN2 HIGH
     
     // main loop
     while(1) {
