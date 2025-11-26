@@ -48,7 +48,9 @@ int main(void) {
     NRF_RADIO_NS->INTENSET = (RADIO_INTENSET_DISABLED_Enabled << RADIO_INTENSET_DISABLED_Pos);
 
     while(1) {
-        __WFE();
+        __SEV(); // set event
+        __WFE(); // wait for event
+        __WFE(); // wait for event
     }
 }
 
