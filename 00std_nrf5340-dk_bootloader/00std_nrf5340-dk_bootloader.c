@@ -33,16 +33,16 @@ int main(void) {
     // 1098 7654 3210 9876 5432 1098 7654 3210
     // .... .... .... .... .... .... .... ...A A: DIR:    0=Input
     // .... .... .... .... .... .... .... ..B. B: INPUT:  0=Connect
-    // .... .... .... .... .... .... .... CC.. C: PULL:   0=Disabled
+    // .... .... .... .... .... .... .... CC.. C: PULL:   3=Pullup
     // .... .... .... .... .... .DDD .... .... D: DRIVE:  0=S0S1
-    // .... .... .... ..EE .... .... .... .... E: SENSE:  2=High
+    // .... .... .... ..EE .... .... .... .... E: SENSE:  3=Low
     // .FFF .... .... .... .... .... .... .... F: MCUSEL: 1=NetworkMCU
-    // xxxx xxxx xxxx xx10 xxxx xxxx xxxx 0000 
-    //    1    0    0    2    0    0    0    0 0x10020000
-    NRF_P0_S->PIN_CNF[23]         = 0x10020000; // BUTTON1
-    NRF_P0_S->PIN_CNF[24]         = 0x10020000; // BUTTON2
-    NRF_P0_S->PIN_CNF[ 8]         = 0x10020000; // BUTTON3
-    NRF_P0_S->PIN_CNF[ 9]         = 0x10020000; // BUTTON4
+    // xxxx xxxx xxxx xx11 xxxx xxxx xxxx 1100 
+    //    1    0    0    3    0    0    0    c 0x1003000c
+    NRF_P0_S->PIN_CNF[23]         = 0x1003000c; // BUTTON1
+    NRF_P0_S->PIN_CNF[24]         = 0x1003000c; // BUTTON2
+    NRF_P0_S->PIN_CNF[ 8]         = 0x1003000c; // BUTTON3
+    NRF_P0_S->PIN_CNF[ 9]         = 0x1003000c; // BUTTON4
     
     // release the netcore's reset line
     NRF_RESET_S->NETWORK.FORCEOFF = 0;
