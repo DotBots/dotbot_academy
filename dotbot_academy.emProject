@@ -39,7 +39,7 @@
       gcc_entry_point="Reset_Handler"
       link_linker_script_file="$(ProjectDir)/../common/system/nRF_Flash_Variant2.icf"
       linker_memory_map_file="$(ProjectDir)/../common/system/nRF5340_xxAA_Application_MemoryMap.xml"
-      macros="DeviceHeaderFile=$(PackagesDir)/../common/system/nRF/Device/Include/nrf.h;DeviceSystemFile=$(PackagesDir)/../common/system/nRF/Device/Source/system_nrf5340_application.c;DeviceVectorsFile=$(PackagesDir)/../common/system/nRF/Source/nrf5340_application_Vectors.s;DeviceFamily=nRF;Target=nRF5340_xxAA_Application"
+      macros="BuildTarget=dotbot-v3;DeviceFamily=nRF;Target=nRF5340_xxAA_Application;Placement=Flash"
       project_directory="00std_dotbot_bootloader"
       project_type="Executable"
       target_reset_script="Reset();" />
@@ -753,8 +753,8 @@
       <file file_name="../common/system/nRF/Source/nRF_Startup.s" />
       <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
     </folder>
-    <import file_name="DotBot-libs/bsp/bsp.emProject" />
-    <import file_name="DotBot-libs/drv/drv.emProject" />
+    <import file_name="dotbot-libs/bsp/bsp.emProject" />
+    <import file_name="dotbot-libs/drv/drv.emProject" />
   </project>
   <project Name="01libs_dotbot_motors">
     <configuration
@@ -813,7 +813,7 @@
       <file file_name="../common/system/nRF/Source/nRF_Startup.s" />
       <file file_name="../common/system/SEGGER_THUMB_Startup.s" />
     </folder>
-    <import file_name="DotBot-libs/bsp/bsp.emProject" />
-    <import file_name="DotBot-libs/drv/drv.emProject" />
+    <import file_name="dotbot-libs/bsp/bsp.emProject" />
+    <import file_name="dotbot-libs/drv/drv.emProject" />
   </project>
 </solution>
