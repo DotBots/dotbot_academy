@@ -115,4 +115,28 @@
       <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/cpu.c" />
     </folder>
   </project>
+  <project Name="02testbed_dotbot_rcrobot">
+    <configuration
+      Name="Common"
+      linker_additional_files="$(ProjectDir)/../common/swarmit/cmse_implib$(LIB)"
+      project_dependencies="00bsp_dotbot_board(bsp);00bsp_timer(bsp);00drv_motors(drv);00bsp_gpio(bsp)"
+      project_directory="02testbed_dotbot_rcrobot"
+      project_type="Executable" />
+    <folder Name="Setup">
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_flash_placement.xml" />
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_MemoryMap.xml">
+        <configuration Name="Common" file_type="Memory Map" />
+      </file>
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/Scripts/nRF_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+    </folder>
+    <folder Name="Source">
+      <file file_name="02testbed_dotbot_rcrobot.c" />
+    </folder>
+    <folder Name="System">
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/nRF5340_xxAA_Application_system_init.c" />
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/cpu.c" />
+    </folder>
+  </project>
 </solution>
