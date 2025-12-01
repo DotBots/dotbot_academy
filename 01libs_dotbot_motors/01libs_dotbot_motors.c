@@ -1,24 +1,17 @@
 #include <stdint.h>
 #include <nrf.h>
-// Include BSP packages
 #include "board.h"
 #include "motors.h"
 
-//=========================== defines ==========================================
-
-#define TIMER_DEV (0)
-
-//=========================== main =============================================
-
 int main(void) {
-    // Turn ON the DotBot board regulator
+    // turn on the DotBot board regulator
     db_board_init();
 
-    // Configure Motors
+    // configure motors
     db_motors_init();
 
     while (1) {
-        // Move forward
+        // move forward
         db_motors_set_speed(50, 50);
     }
 }

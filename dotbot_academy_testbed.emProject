@@ -43,12 +43,12 @@
     link_dedupe_code="Yes"
     linker_additional_options="--gc-sections"
     link_time_optimization="No"
-    linker_memory_map_file="$(ProjectDir)/nRF5340_xxAA_Application_MemoryMap.xml"
+    linker_memory_map_file="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_MemoryMap.xml"
     linker_output_format="bin"
     linker_printf_fmt_level="int"
     linker_printf_fp_enabled="Float"
     linker_printf_width_precision_supported="Yes"
-    linker_section_placement_file="$(ProjectDir)/nRF5340_xxAA_Application_flash_placement.xml"
+    linker_section_placement_file="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_flash_placement.xml"
     macros="BuildTarget=dotbot-v3;DeviceFamily=nRF;Target=nRF5340_xxAA_Application;Placement=Flash"
     target_reset_script="Reset();"
     target_script_file="$(ProjectDir)/../dotbot-libs/nRF/Scripts/nRF_Target.js"
@@ -70,13 +70,13 @@
   <project Name="02testbed_dotbot_leds">
     <configuration
       Name="Common"
-      linker_additional_files="$(ProjectDir)/cmse_implib$(LIB)"
+      linker_additional_files="$(ProjectDir)/../common/swarmit/cmse_implib$(LIB)"
       project_dependencies="00bsp_dotbot_board(bsp);00bsp_timer(bsp);00drv_rgbled_pwm(drv)"
       project_directory="02testbed_dotbot_leds"
       project_type="Executable" />
     <folder Name="Setup">
-      <file file_name="$(ProjectDir)/nRF5340_xxAA_Application_flash_placement.xml" />
-      <file file_name="$(ProjectDir)/nRF5340_xxAA_Application_MemoryMap.xml">
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_flash_placement.xml" />
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_MemoryMap.xml">
         <configuration Name="Common" file_type="Memory Map" />
       </file>
       <file file_name="$(ProjectDir)/../dotbot-libs/nRF/Scripts/nRF_Target.js">
@@ -85,6 +85,30 @@
     </folder>
     <folder Name="Source">
       <file file_name="02testbed_dotbot_leds.c" />
+    </folder>
+    <folder Name="System">
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/nRF5340_xxAA_Application_system_init.c" />
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/cpu.c" />
+    </folder>
+  </project>
+  <project Name="02testbed_dotbot_motors">
+    <configuration
+      Name="Common"
+      linker_additional_files="$(ProjectDir)/../common/swarmit/cmse_implib$(LIB)"
+      project_dependencies="00bsp_dotbot_board(bsp);00bsp_timer(bsp);00drv_motors(drv)"
+      project_directory="02testbed_dotbot_motors"
+      project_type="Executable" />
+    <folder Name="Setup">
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_flash_placement.xml" />
+      <file file_name="$(ProjectDir)/../common/swarmit/nRF5340_xxAA_Application_MemoryMap.xml">
+        <configuration Name="Common" file_type="Memory Map" />
+      </file>
+      <file file_name="$(ProjectDir)/../dotbot-libs/nRF/Scripts/nRF_Target.js">
+        <configuration Name="Common" file_type="Reset Script" />
+      </file>
+    </folder>
+    <folder Name="Source">
+      <file file_name="02testbed_dotbot_motors.c" />
     </folder>
     <folder Name="System">
       <file file_name="$(ProjectDir)/../dotbot-libs/nRF/System/nRF5340_xxAA_Application_system_init.c" />
