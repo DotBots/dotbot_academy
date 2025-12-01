@@ -9,7 +9,7 @@
 
 //=========================== defines ==========================================
 
-#define TIMER_DEV (0)
+#define TIMER_DEV           (0)
 #define CMD_FORWARD         'F'
 #define CMD_LEFT            'L'
 #define CMD_RIGHT           'R'
@@ -19,7 +19,7 @@
 #define TIMEOUT_CHECK_TICKS (25000)  ///< delay between packet received timeout checks
 
 typedef struct {
-    uint32_t ts_last_packet_received; ///< Last timestamp in microseconds a control packet was received
+    uint32_t ts_last_packet_received; ///< Last time a control packet was received
 } dotbot_vars_t;
 
 //=========================== variables ========================================
@@ -67,9 +67,9 @@ static void _timeout_check(void) {
 
 void swarmit_keep_alive(void);
 void swarmit_localization_handle_isr(void);
-void SPIM4_IRQHandler(void) { swarmit_localization_handle_isr(); }
 typedef void (*ipc_isr_cb_t)(const uint8_t *, size_t);
 void swarmit_ipc_isr(ipc_isr_cb_t cb);
+void SPIM4_IRQHandler(void) { swarmit_localization_handle_isr(); }
 void IPC_IRQHandler(void) { swarmit_ipc_isr(_rx_data_callback); }
 
 //=========================== main =============================================

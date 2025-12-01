@@ -1,7 +1,7 @@
 import time
 from pynput import keyboard
 
-from marilib.mari_protocol import DefaultPayload, Frame
+from marilib.mari_protocol import Frame
 from marilib.marilib_cloud import MarilibCloud
 from marilib.model import EdgeEvent, GatewayInfo, MariNode
 from marilib.communication_adapter import MQTTAdapter
