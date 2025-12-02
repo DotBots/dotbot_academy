@@ -15,8 +15,9 @@
 #define CMD_RIGHT           'R'
 #define CMD_STOP            'S'
 #define SPEED               (75)
+#define SPEED_SIDE          (50)
 #define TIMEOUT_CHECK_MS    (200)
-#define TIMEOUT_CHECK_TICKS (25000)  ///< delay between packet received timeout checks
+#define TIMEOUT_CHECK_TICKS (10000)  ///< delay between packet received timeout checks
 
 typedef struct {
     uint32_t ts_last_packet_received; ///< Last time a control packet was received
@@ -26,10 +27,6 @@ typedef struct {
 
 static dotbot_vars_t _dotbot_vars;
 
-static const gpio_t led_red   = { .port = DB_RGB_LED_PWM_RED_PORT,   .pin = DB_RGB_LED_PWM_RED_PIN   };
-static const gpio_t led_green = { .port = DB_RGB_LED_PWM_GREEN_PORT, .pin = DB_RGB_LED_PWM_GREEN_PIN };
-static const gpio_t led_blue  = { .port = DB_RGB_LED_PWM_BLUE_PORT,  .pin = DB_RGB_LED_PWM_BLUE_PIN  };
-
 //=========================== callbacks ========================================
 
 static void _rx_data_callback(const uint8_t *pkt, size_t len) {
@@ -38,19 +35,15 @@ static void _rx_data_callback(const uint8_t *pkt, size_t len) {
     switch (*pkt) {
         case CMD_FORWARD:
             db_motors_set_speed(SPEED, SPEED);
-            db_gpio_set(&led_red); db_gpio_clear(&led_green); db_gpio_clear(&led_blue);
             break;
         case CMD_LEFT:
-            db_motors_set_speed(-SPEED, SPEED);
-            db_gpio_clear(&led_red); db_gpio_set(&led_green); db_gpio_clear(&led_blue);
+            db_motors_set_speed(-SPEED_SIDE, SPEED_SIDE);
             break;
         case CMD_RIGHT:
-            db_motors_set_speed(SPEED, -SPEED);
-            db_gpio_clear(&led_red); db_gpio_clear(&led_green); db_gpio_set(&led_blue);
+            db_motors_set_speed(SPEED_SIDE, -SPEED_SIDE);
             break;
         case CMD_STOP:
             db_motors_set_speed(0, 0);
-            db_gpio_set(&led_red); db_gpio_set(&led_green); db_gpio_set(&led_blue);
             break;
     }
 }
@@ -59,7 +52,6 @@ static void _timeout_check(void) {
     uint32_t ticks = db_timer_ticks(TIMER_DEV);
     if (ticks > _dotbot_vars.ts_last_packet_received + TIMEOUT_CHECK_TICKS) {
         db_motors_set_speed(0, 0);
-        db_gpio_clear(&led_red); db_gpio_clear(&led_green); db_gpio_clear(&led_blue);
     }
 }
 
@@ -82,10 +74,6 @@ int main(void) {
     // initialize peripherals
     db_board_init();
     db_motors_init();
-
-    db_gpio_init(&led_red,   DB_GPIO_OUT);
-    db_gpio_init(&led_green, DB_GPIO_OUT);
-    db_gpio_init(&led_blue,  DB_GPIO_OUT);
 
     db_timer_set_periodic_ms(TIMER_DEV, 1, TIMEOUT_CHECK_MS, &_timeout_check);
 

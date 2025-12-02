@@ -23,42 +23,62 @@ def main():
     )
 
     print("Connected. Use keys to control the robot (no Enter needed):")
-    print("  w = forward, a = left, d = right, s = stop, l = quit")
+    print("  w = forward, a = left, d = right, s = stop, q = quit")
 
     running = True
+    pressed = set()          # currently pressed movement keys
+    last_sent = {}           # key -> last send time (seconds)
+    send_interval = 0.1      # seconds between frames for a held key
 
     def on_press(key):
-        nonlocal running
+        nonlocal running, pressed
         try:
             c = key.char.lower()
         except AttributeError:
             return
 
-        if c == "w":
-            payload = CMD_FORWARD
-        elif c == "a":
-            payload = CMD_LEFT
-        elif c == "d":
-            payload = CMD_RIGHT
-        elif c == "s":
-            payload = CMD_STOP
-        elif c == "l":
+        if c in ("w", "a", "d", "s"):
+            pressed.add(c)
+        elif c == "q":
             print("\nQuitting.")
             running = False
-            return
-        else:
-            return
 
-        mari.send_frame(DOTBOT_ADDRESS, payload)
-        print(f" -> sent {payload!r} to {hex(DOTBOT_ADDRESS)}")
+    def on_release(key):
+        nonlocal pressed
+        try:
+            c = key.char.lower()
+        except AttributeError:
+            return
+        if c in pressed:
+            pressed.discard(c)
 
-    listener = keyboard.Listener(on_press=on_press)
+    listener = keyboard.Listener(on_press=on_press, on_release=on_release)
     listener.start()
 
     try:
         while running:
             mari.update()
-            time.sleep(0.05)
+
+            now = time.time()
+            for c in list(pressed):
+                if c == "w":
+                    payload = CMD_FORWARD
+                elif c == "a":
+                    payload = CMD_LEFT
+                elif c == "d":
+                    payload = CMD_RIGHT
+                elif c == "s":
+                    payload = CMD_STOP
+                else:
+                    continue
+
+                last = last_sent.get(c, 0.0)
+                if now - last >= send_interval:
+                    mari.send_frame(DOTBOT_ADDRESS, payload)
+                    last_sent[c] = now
+                    print(f" -> sent {payload!r} to {hex(DOTBOT_ADDRESS)}")
+
+            time.sleep(0.02)
     except KeyboardInterrupt:
         print("\nInterrupted, exiting…")
     finally:
