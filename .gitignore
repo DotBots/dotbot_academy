@@ -1,14 +1,3 @@
 *.emSession
 *.jlink
-/00std_dotbot_bootloader/Output/
-/00std_dotbot_leds/Output/
-/00std_dotbot_leds_appcore/Output/
-/00std_dotbot_motors/Output/
-/00std_dotbot_rcrobot/Output/
-/00std_hello_world/Output/
-/00std_nrf5340-dk_bootloader/Output/
-/00std_nrf5340-dk_buttons/Output/
-/00std_nrf5340-dk_leds/Output/
-/00std_nrf5340-dk_rcremote/Output/
-/00std_radio_rx/Output/
-/00std_radio_tx/Output/
+Output/
