@@ -24,7 +24,7 @@ int main(void) {
     // .... .... .... .... .... .DDD .... .... D: DRIVE:  0=S0S1
     // .... .... .... ..EE .... .... .... .... E: SENSE:  0=Disabled
     // .FFF .... .... .... .... .... .... .... F: MCUSEL: 1=NetworkMCU
-    // x001 xxxx xxxx xx00 xxxx x000 xxxx 0011
+    // x001 xxxx xxxx xx00 xxxx x000 xxxx 0011 
     //    1    0    0    0    0    0    0    3 0x10000003
     NRF_P0_NS->PIN_CNF[28]        = 0x10000003;            // LED1
     NRF_P0_NS->PIN_CNF[29]        = 0x10000003;            // LED2
@@ -89,19 +89,9 @@ void GPIOTE_IRQHandler(void) {
 
         // clear
         NRF_GPIOTE_NS->EVENTS_IN[0] = 0x00000000;
-
-        // check pin state
-        pin_state = NRF_P0_NS->OUT & (0x00000001 << 28);
-
-        if (pin_state) {
-            // LED1 is OFF
-            // turn it on
-            NRF_P0_NS->OUTCLR         = (0x00000001 << 28);    // LED1
-        } else {
-            // LED1 is ON
-            // turn it off
-            NRF_P0_NS->OUTSET         = (0x00000001 << 28);    // LED1
-        }
+        
+        // handle
+        NRF_P0_NS->OUTCLR         = (0x00000001 << 28);    // LED1
     }
 
     if (NRF_GPIOTE_NS->EVENTS_IN[1] == 0x00000001 ) {
