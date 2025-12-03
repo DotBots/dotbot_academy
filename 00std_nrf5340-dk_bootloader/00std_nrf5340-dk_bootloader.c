@@ -22,7 +22,7 @@ int main(void) {
     // .... .... .... .... .... DDDD .... .... D: DRIVE:  0=S0S1
     // .... .... .... ..EE .... .... .... .... E: SENSE:  0=Disabled
     // .FFF .... .... .... .... .... .... .... F: MCUSEL: 1=NetworkMCU
-    // x001 xxxx xxxx xx00 xxxx 0000 xxxx 0011 
+    // x001 xxxx xxxx xx00 xxxx 0000 xxxx 0011
     //    1    0    0    0    0    0    0    3 0x10000003
     NRF_P0_S->PIN_CNF[28]         = 0x10000003; // LED1
     NRF_P0_S->PIN_CNF[29]         = 0x10000003; // LED2

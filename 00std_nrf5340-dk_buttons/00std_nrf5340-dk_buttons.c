@@ -89,19 +89,9 @@ void GPIOTE_IRQHandler(void) {
 
         // clear
         NRF_GPIOTE_NS->EVENTS_IN[0] = 0x00000000;
-
-        // check pin state
-        pin_state = NRF_P0_NS->OUT & (0x00000001 << 28);
-
-        if (pin_state) {
-            // LED1 is OFF
-            // turn it on
-            NRF_P0_NS->OUTCLR         = (0x00000001 << 28);    // LED1
-        } else {
-            // LED1 is ON
-            // turn it off
-            NRF_P0_NS->OUTSET         = (0x00000001 << 28);    // LED1
-        }
+        
+        // handle
+        NRF_P0_NS->OUTCLR         = (0x00000001 << 28);    // LED1
     }
 
     if (NRF_GPIOTE_NS->EVENTS_IN[1] == 0x00000001 ) {

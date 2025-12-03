@@ -1,3 +1,0 @@
-[submodule "dotbot-libs"]
-	path = dotbot-libs
-	url = git@github.com:DotBots/DotBot-libs.git
