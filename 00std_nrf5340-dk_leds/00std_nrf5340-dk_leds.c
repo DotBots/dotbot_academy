@@ -9,7 +9,7 @@
 
 int main(void) {
    
-    // configure three pins as output
+    // configure LED pins as output
     //  3           2            1           0
     // 1098 7654 3210 9876 5432 1098 7654 3210
     // .... .... .... .... .... .... .... ...A A: DIR:    1=Output
