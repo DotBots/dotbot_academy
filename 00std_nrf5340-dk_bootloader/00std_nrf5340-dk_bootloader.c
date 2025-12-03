@@ -37,7 +37,7 @@ int main(void) {
     // .... .... .... .... .... .DDD .... .... D: DRIVE:  0=S0S1
     // .... .... .... ..EE .... .... .... .... E: SENSE:  3=Low
     // .FFF .... .... .... .... .... .... .... F: MCUSEL: 1=NetworkMCU
-    // x001 xxxx xxxx xx11 xxxx x000 xxxx 1100 
+    // x001 xxxx xxxx xx11 xxxx x000 xxxx 1100
     //    1    0    0    3    0    0    0    c 0x1003000c
     NRF_P0_S->PIN_CNF[23]         = 0x1003000c; // BUTTON1
     NRF_P0_S->PIN_CNF[24]         = 0x1003000c; // BUTTON2
